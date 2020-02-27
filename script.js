@@ -7,17 +7,20 @@ input.addEventListener("keyup", function(event) {
 });
 
 Todo_list = [];
+var storedNames;
 
 function refrestList() {
   var clear_ul_list = document.getElementById("todo_list");
   clear_ul_list.innerHTML = "";
-  localStorage.setItem("Todo_list", JSON.stringify(Todo_list));
-  var storedNames = JSON.parse(localStorage.getItem("Todo_list"));
 
-  for (var i = 0; i < storedNames.length; i++) {
+  storedNames = JSON.parse(localStorage.getItem("Todo_list"));
+  if (storedNames != null && storedNames.length > 0) {
+    Todo_list = storedNames;
+  }
+  for (var i = 0; i < Todo_list.length; i++) {
     var new_Todo = document.createElement("li");
     new_Todo.id = i;
-    new_Todo.append(storedNames[i]);
+    new_Todo.append(Todo_list[i]);
     var close_btn = document.createElement("span");
     close_btn.innerText = "x";
     close_btn.id = "close";
@@ -31,16 +34,18 @@ function refrestList() {
 
     new_Todo.appendChild(edit_btn);
     document.getElementById("todo_list").appendChild(new_Todo);
-    localStorage.setItem("Todo_list", JSON.stringify(storedNames));
 
     add_update_btn.innerText = "Add";
     input_todo.value = "";
     document
       .getElementById("add_update_btn")
       .setAttribute("onclick", `add_update_List()`);
+
+    debugger;
   }
 }
 function edit_todo_list(index) {
+  debugger;
   var e = document.getElementById(`${index}`);
   var editInput = document.querySelector("input[type=text]");
   editInput.value = Todo_list[index];
@@ -53,6 +58,8 @@ function edit_todo_list(index) {
 
 function delete_todo(index) {
   Todo_list.splice(index, 1);
+
+  localStorage.setItem("Todo_list", JSON.stringify(Todo_list));
   refrestList();
 }
 function add_update_List(add_or_update = -1) {
@@ -62,14 +69,13 @@ function add_update_List(add_or_update = -1) {
       alert("Please Insert A Todo :D");
     } else {
       Todo_list.push(input_value);
-
-      refrestList();
     }
   } else {
     var current_value = document.getElementById("input_todo").value;
     Todo_list.splice(add_or_update, 1, current_value);
-    refrestList();
   }
+  localStorage.setItem("Todo_list", JSON.stringify(Todo_list));
+  refrestList();
 }
 
 var list = document.querySelector("ul");
