@@ -201,39 +201,19 @@
 
         function delete_todo(index) {
             Todo_list.splice(index, 1);
-            console.log('TodoList ---- ', Todo_list)
             refrestList();
 
         }
         function add_update_List(add_or_update = -1) {
 
-
-
-            if (add_or_update === -1) {
+             if (add_or_update === -1) {
                 var input_value = document.getElementById("input_todo").value;
                 if (input_value === '') {
                     alert("Please Insert A Todo :D");
                 }
                 else {
                     Todo_list.push(input_value);
-                    for (var i = 0; i < Todo_list.length; i++) {
-                        var new_Todo = document.createElement("li");
-                        new_Todo.id = i;
-                        new_Todo.append(Todo_list[i]);
-                        var close_btn = document.createElement("span");
-                        close_btn.innerText = "X";
-                        close_btn.id = "close";
-                        close_btn.setAttribute("onclick", `delete_todo(${i})`);
-                        new_Todo.appendChild(close_btn);
-
-                        var edit_btn = document.createElement("span");
-                        edit_btn.innerText = "EDIT";
-                        edit_btn.id = "edit";
-                        edit_btn.setAttribute("onclick", `edit_todo_list(${i})`);
-                        new_Todo.appendChild(edit_btn);
-                    }
-                    document.getElementById("todo_list").appendChild(new_Todo);
-                    input_todo.value = "";
+                    refrestList();
                 }
             }
             else {
