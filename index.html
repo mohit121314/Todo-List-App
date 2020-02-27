@@ -154,6 +154,13 @@
     </div>
 
     <script>
+        var input = document.getElementById("input_todo");
+        input.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("add_update_btn").click();
+            }
+        });
 
         Todo_list = [];
         function refrestList() {
@@ -199,6 +206,9 @@
 
         }
         function add_update_List(add_or_update = -1) {
+
+
+
             if (add_or_update === -1) {
                 var input_value = document.getElementById("input_todo").value;
                 if (input_value === '') {
