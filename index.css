@@ -26,6 +26,7 @@ ul li {
   -ms-user-select: none;
   user-select: none;
   border-bottom: 1px solid darkgrey;
+  font-family: "Comic Sans MS";
 }
 
 #add_update_btn {
@@ -37,6 +38,7 @@ ul li {
 
   text-align: center;
   transition: 0.3s;
+  font-family: "Comic Sans MS";
 }
 
 #add_update_btn {
@@ -63,7 +65,7 @@ input {
   font-size: 16px;
   outline: none;
   margin-left: 240px;
-
+  font-family: "Comic Sans MS";
 }
 
 #add_update_btn:hover {
@@ -85,7 +87,7 @@ input {
 
 h2 {
   font-size: 40px;
-  font-family: "Lucida Console"	;
+  font-family: "Comic Sans MS";
 }
 
 ul li:hover {

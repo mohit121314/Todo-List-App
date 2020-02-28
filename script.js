@@ -78,7 +78,9 @@ function edit_todo_list(index) {
 function up_list(index) {
   console.log(0 - 1);
   if (index - 1 === -1) {
+      alert("No Task's present above to switch :D");
     refrestList();
+    
   } else {
     var temp = Todo_list[index];
     Todo_list[index] = Todo_list[index - 1];
@@ -91,7 +93,9 @@ function up_list(index) {
 
 function down_list(index) {
   if (Todo_list[index + 1] === undefined) {
+    alert("No Task's present below to switch :D");
     refrestList();
+
   } else {
     var temp = Todo_list[index];
     Todo_list[index] = Todo_list[index + 1];
@@ -111,7 +115,7 @@ function add_update_List(add_or_update = -1) {
   if (add_or_update === -1) {
     var input_value = document.getElementById("input_todo").value;
     if (input_value === "") {
-      alert("Please Insert A Todo :D");
+      alert("Please Dont Leave me Blank :D");
     } else {
       Todo_list.push(input_value);
     }
@@ -127,8 +131,11 @@ var list = document.querySelector("ul");
 list.addEventListener(
   "click",
   function(ev) {
+
     if (ev.target.tagName === "LI") {
       ev.target.classList.toggle("checked");
+      ev.preventDefault();
+      
     }
   },
   false
