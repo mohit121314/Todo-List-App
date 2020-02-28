@@ -22,24 +22,33 @@ function refrestList() {
     new_Todo.id = i;
     new_Todo.append(Todo_list[i]);
     var close_btn = document.createElement("span");
-    close_btn.innerText = "x";
+    var close_ = document.createElement("img");
+    close_.src = "baseline_clear_black_18dp.png";
+    close_btn.appendChild(close_);
     close_btn.id = "close";
     close_btn.setAttribute("onclick", `delete_todo(${i})`);
 
     new_Todo.appendChild(close_btn);
     var edit_btn = document.createElement("span");
-    edit_btn.innerText = "Edit";
+
+    var edit_ = document.createElement("img");
+    edit_.src = "baseline_create_black_18dp.png";
+    edit_btn.appendChild(edit_);
     edit_btn.id = "edit";
     edit_btn.setAttribute("onclick", `edit_todo_list(${i})`);
 
     new_Todo.appendChild(edit_btn);
 
     var up_btn = document.createElement("span");
-    up_btn.innerText = "^";
+    var up_ = document.createElement("img");
+    up_.src = "baseline_keyboard_arrow_up_black_18dp.png";
+    up_btn.appendChild(up_);
     up_btn.id = "up";
     up_btn.setAttribute("onclick", `up_list(${i})`);
     var down_btn = document.createElement("span");
-    down_btn.innerText = "v";
+    var down_ = document.createElement("img");
+    down_.src = "baseline_keyboard_arrow_down_black_18dp.png";
+    down_btn.appendChild(down_);
     down_btn.id = "down";
     down_btn.setAttribute("onclick", `down_list(${i})`);
 
