@@ -40,7 +40,7 @@ ul li {
 
 #add_update_btn {
   padding: 15px;
-  width: 25%;
+  width: 15%;
   background: #d9d9d9;
   color: #555;
   float: left;
@@ -55,11 +55,12 @@ input {
   margin: 10px;
   border: none;
   border-radius: 0;
-  width: 55%;
+  width: 50%;
   padding: 15px;
   float: left;
   font-size: 16px;
   outline: none;
+  margin-left: 240px;
 }
 
 #add_update_btn:hover {
@@ -127,6 +128,32 @@ ul li.checked::before {
 }
 
 #edit:hover {
+  background-color: black;
+  color: white;
+}
+
+#up {
+  position: absolute;
+
+  right: 95px;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+#up:hover {
+  background-color: black;
+  color: white;
+}
+
+#down {
+  position: absolute;
+
+  right: 145px;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+#down:hover {
   background-color: black;
   color: white;
 }

@@ -33,6 +33,19 @@ function refrestList() {
     edit_btn.setAttribute("onclick", `edit_todo_list(${i})`);
 
     new_Todo.appendChild(edit_btn);
+
+    var up_btn = document.createElement("span");
+    up_btn.innerText = "^";
+    up_btn.id = "up";
+    up_btn.setAttribute("onclick", `up_list(${i})`);
+    var down_btn = document.createElement("span");
+    down_btn.innerText = "v";
+    down_btn.id = "down";
+    down_btn.setAttribute("onclick", `down_list(${i})`);
+
+    new_Todo.appendChild(up_btn);
+    new_Todo.appendChild(down_btn);
+
     document.getElementById("todo_list").appendChild(new_Todo);
 
     add_update_btn.innerText = "Add";
@@ -40,12 +53,9 @@ function refrestList() {
     document
       .getElementById("add_update_btn")
       .setAttribute("onclick", `add_update_List()`);
-
-    debugger;
   }
 }
 function edit_todo_list(index) {
-  debugger;
   var e = document.getElementById(`${index}`);
   var editInput = document.querySelector("input[type=text]");
   editInput.value = Todo_list[index];
@@ -56,6 +66,32 @@ function edit_todo_list(index) {
     .setAttribute("onclick", `add_update_List(${index})`);
 }
 
+function up_list(index) {
+  console.log(0 - 1);
+  if (index - 1 === -1) {
+    refrestList();
+  } else {
+    var temp = Todo_list[index];
+    Todo_list[index] = Todo_list[index - 1];
+    Todo_list[index - 1] = temp;
+
+    localStorage.setItem("Todo_list", JSON.stringify(Todo_list));
+    refrestList();
+  }
+}
+
+function down_list(index) {
+  if (Todo_list[index + 1] === undefined) {
+    refrestList();
+  } else {
+    var temp = Todo_list[index];
+    Todo_list[index] = Todo_list[index + 1];
+    Todo_list[index + 1] = temp;
+  }
+
+  localStorage.setItem("Todo_list", JSON.stringify(Todo_list));
+  refrestList();
+}
 function delete_todo(index) {
   Todo_list.splice(index, 1);
 
